@@ -1,0 +1,78 @@
+body{
+    background: url('../img/light-wallpaper.jpg');
+    font: 15px/1.5 Arial, Helvetica, sans-serif;
+    padding: 0;
+    margin: 0;
+    color: #d32f2f;
+}
+
+.wrap {
+    max-width: 750px;
+    border-radius: 20px;
+    margin: auto;
+    background: rgba(0, 0, 0, 0.8);
+    box-sizing: border-box;
+    padding: 40px;
+    color: #fff;
+    margin-top: 100px;
+    text-align: center;
+    font-size: 25px;
+}
+
+input[type=text], input[type=file], textarea {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px 5px;
+    background: rgba(0, 0, 0, 0.10);
+    outline: none;
+    border: none;
+    border-bottom: 1px dotted #fff;
+    color: #fff;
+    border-radius: 5px;
+    margin: 5px;
+    font-weight: bold;
+}
+
+input[type=submit] {
+    width: 25%;
+    box-sizing: border-box;
+    padding: 10px 0;
+    margin-top: 30px;
+    outline: none;
+    border: none;
+    background: #60adde;
+    opacity: 0.5;
+    border-radius: 20px;
+    font-size: 20px;
+    color: #fff;
+}
+
+input[type=submit]:hover {
+    background: #003366;
+}
+
+p a{
+	font-weight: bold;
+    text-decoration: none;
+    color: #ffa000;
+}
+
+p a:hover {
+    color: #009688;
+}
+
+
+
+@media(max-width: 768px) {
+	.wrap {
+		width: 90%;
+		font-size: 15px;
+		padding: 15px;
+		margin-top: 50px;
+		margin-bottom: 30px;
+	}
+
+	input[type=submit] {
+		width: 100%;
+	}
+}
