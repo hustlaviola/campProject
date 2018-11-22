@@ -204,10 +204,11 @@ div#intervention {
 
 p a{
     text-decoration: none;
+    color: #ffa000;
 }
 
 p a:hover {
-    color: #800000;
+    color: #009688;
 }
 
 /* Boxes */
