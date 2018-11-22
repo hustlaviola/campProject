@@ -61,6 +61,13 @@ p a:hover {
     color: #009688;
 }
 
+footer {
+    padding: 20px;
+    margin-top: 20px;
+    text-align: center;
+    font-size: 25px;
+}
+
 
 
 @media(max-width: 768px) {
@@ -74,5 +81,9 @@ p a:hover {
 
 	input[type=submit] {
 		width: 100%;
+	}
+	
+	footer {
+		font-size: 15px;
 	}
 }
