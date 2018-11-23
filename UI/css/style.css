@@ -45,6 +45,12 @@ ul{
     margin-bottom: 10px;
 }
 
+/* Opaque */
+
+#opaque {
+    background: rgba(0, 0, 0, 0.7);
+}
+
 /* Form */
 
 .wrap {
@@ -150,7 +156,7 @@ div#crisis {
     min-height: 400px;
     background: url('../img/asian-american-female.jpg') no-repeat 0 -130px ;
     text-align: center;
-    color: #800000;
+    color: orange;
 }
 
 #showcase h1{
@@ -264,8 +270,17 @@ footer {
         text-align: center;
         width: 100%;
     }
+
     header nav li{
         padding: 5px;
+    }
+
+    .wrap {
+        width: 90%;
+        font-size: 15px;
+        padding: 15px;
+        margin-top: 50px;
+        margin-bottom: 30px;
     }
 
     #showcase h1 {
@@ -275,6 +290,10 @@ footer {
 
     #showcase p{
         font-size: 20px;
+    }
+
+    #link p{
+        font-size: 18px;
     }
 
     div#red-flag {
@@ -292,8 +311,8 @@ footer {
     }
 
     div#crisis {
-    padding: 20px;
-}
+        padding: 20px;
+    }
 
     footer {
         font-size: 20px;

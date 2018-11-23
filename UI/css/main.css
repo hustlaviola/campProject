@@ -6,6 +6,8 @@ body{
     color: #d32f2f;
 }
 
+/* Globals */
+
 .wrap {
     max-width: 750px;
     border-radius: 20px;
@@ -18,6 +20,59 @@ body{
     text-align: center;
     font-size: 25px;
 }
+
+
+.container{
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+}
+
+div a {
+	text-decoration: none;
+	font-size: 16px;
+}
+
+div a:hover {
+	color: #009688;
+}
+
+em {
+	color: yellow;
+}
+
+p a{
+	font-weight: bold;
+    text-decoration: none;
+    color: #ffa000;
+}
+
+p a:hover {
+    color: #009688;
+}
+
+/* Top */
+
+#top {
+	text-align: center;
+	margin-top: 50px;
+}
+
+/* Boxes */
+
+#boxes {
+    margin-top: 20px;
+}
+
+#boxes .box{
+    float: left;
+    text-align: center;
+    width: 30%;
+    padding: 10px;
+}
+
+
+/* Form */
 
 input[type=text], input[type=file], textarea {
     width: 100%;
@@ -33,7 +88,7 @@ input[type=text], input[type=file], textarea {
     font-weight: bold;
 }
 
-input[type=submit] {
+input[type=submit], button {
     width: 25%;
     box-sizing: border-box;
     padding: 10px 0;
@@ -47,23 +102,34 @@ input[type=submit] {
     color: #fff;
 }
 
-input[type=submit]:hover {
+input[type=submit]:hover, button:hover {
     background: #003366;
 }
 
-p a{
-	font-weight: bold;
-    text-decoration: none;
-    color: #ffa000;
+/* Footer */
+
+footer {
+    padding: 20px;
+    margin-top: 20px;
+    text-align: center;
+    font-size: 25px;
 }
 
-p a:hover {
-    color: #009688;
+footer {
+    padding: 20px;
+    margin-top: 20px;
+    text-align: center;
+    font-size: 25px;
 }
 
 
 
 @media(max-width: 768px) {
+	#boxes .box, .btn {
+        float: none;
+        text-align: center;
+        width: 100%;
+    }
 	.wrap {
 		width: 90%;
 		font-size: 15px;
@@ -74,5 +140,9 @@ p a:hover {
 
 	input[type=submit] {
 		width: 100%;
+	}
+	
+	footer {
+		font-size: 15px;
 	}
 }
