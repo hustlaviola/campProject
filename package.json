@@ -1,0 +1,23 @@
+{
+  "name": "campProject",
+  "version": "1.0.0",
+  "description": "My name is Olatunde Victor a.k.a Viola",
+  "main": "index.js",
+  "scripts": {
+    "deploy": "gh-pages -d UI"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hustlaviola/campProject.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hustlaviola/campProject/issues"
+  },
+  "homepage": "https://hustlaviola.github.io/campProject",
+  "dependencies": {
+    "gh-pages": "^2.0.1"
+  }
+}
