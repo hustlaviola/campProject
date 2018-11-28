@@ -17,6 +17,23 @@ describe('/GET red-flag', () => {
       .end((err, res) => {
         res.should.have.status(200);
         res.body.data.should.be.a('array');
+        done();
+      });
+  });
+});
+
+/* Test the /GET/:id route */
+
+describe('/GET/:id red-flag', () => {
+  it('it should GET a red-flag of the given id', (done) => {
+    const redFlag = {
+      id: 1,
+    };
+    chai.request(server)
+      .get(`/api/v1/red-flags/${redFlag.id}`)
+      .end((err, res) => {
+        res.should.have.status(200);
+        res.body.should.be.a('object');
         res.body.data.should.have.property('createdOn');
         res.body.data.should.have.property('createdBy');
         res.body.data.should.have.property('location');
