@@ -84,3 +84,43 @@ describe('/POST red-flag', () => {
       });
   });
 });
+
+/* Test the /PATCH location route */
+
+describe('/PATCH/:id/location red-flag', () => {
+  it('it should UPDATE the location of the red-flag of the given id', (done) => {
+    const redFlag = {
+      id: 2,
+      location: '44.000, 33,000',
+    };
+    chai.request(server)
+      .patch(`/api/v1/red-flags/${redFlag.id}/location`)
+      .send(redFlag.location)
+      .end((err, res) => {
+        res.should.have.status(200);
+        res.body.should.be.a('object');
+        res.body.data.should.have.property('message').eql('Updated red-flag record\'s location');
+        done();
+      });
+  });
+});
+
+/* Test the /PATCH comment route */
+
+describe('/PATCH/:id/comment red-flag', () => {
+  it('it should UPDATE the comment of the red-flag of the given id', (done) => {
+    const redFlag = {
+      id: 2,
+      comment: 'patch this comment',
+    };
+    chai.request(server)
+      .patch(`/api/v1/red-flags/${redFlag.id}/comment`)
+      .send(redFlag.comment)
+      .end((err, res) => {
+        res.should.have.status(200);
+        res.body.should.be.a('object');
+        res.body.data.should.have.property('message').eql('Updated red-flag record\'s comment');
+        done();
+      });
+  });
+});

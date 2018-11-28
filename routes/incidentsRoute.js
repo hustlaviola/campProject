@@ -78,4 +78,60 @@ router.post('/red-flags', (req, res) => {
   });
 });
 
+router.patch('/red-flags/:id/location', (req, res) => {
+  const redFlag = incidents.find(i => i.id === parseInt(req.params.id));
+  if (!redFlag) {
+    return res.status(404).send({
+      status: res.statusCode,
+      error: 'Not found',
+    });
+  }
+
+
+  const result = Joi.validate(req.body.location, incidentsSchema.location);
+  if (result.error) {
+    return res.status(400).send({
+      status: res.statusCode,
+      error: result.error.details[0].message,
+    });
+  }
+
+  redFlag.location = req.body.location;
+  return res.status(200).send({
+    status: res.statusCode,
+    data: {
+      id: redFlag.id,
+      message: 'Updated red-flag record\'s location',
+    },
+  });
+});
+
+router.patch('/red-flags/:id/comment', (req, res) => {
+  const redFlag = incidents.find(i => i.id === parseInt(req.params.id));
+  if (!redFlag) {
+    return res.status(404).send({
+      status: res.statusCode,
+      error: 'Not found',
+    });
+  }
+
+
+  const result = Joi.validate(req.body.comment, incidentsSchema.comment);
+  if (result.error) {
+    return res.status(400).send({
+      status: res.statusCode,
+      error: result.error.details[0].message,
+    });
+  }
+
+  redFlag.comment = req.body.comment;
+  return res.status(200).send({
+    status: res.statusCode,
+    data: {
+      id: redFlag.id,
+      message: 'Updated red-flag record\'s comment',
+    },
+  });
+});
+
 module.exports = router;
