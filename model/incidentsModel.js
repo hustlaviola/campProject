@@ -1,6 +1,6 @@
 const Joi = require('joi');
 
-const incidentSchema = {
+const incidentsSchema = {
   id: Joi.number().integer(),
   createdOn: Joi.date(),
   createdBy: Joi.number().integer(),
@@ -10,4 +10,4 @@ const incidentSchema = {
   comment: Joi.string(),
 };
 
-module.exports = incidentSchema;
+module.exports = incidentsSchema;

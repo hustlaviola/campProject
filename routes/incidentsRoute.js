@@ -9,7 +9,7 @@ const router = express.Router();
 const incidents = [
   {
     id: 1,
-    createdOn: '2018-11-28T17:29:56.713Z',
+    createdOn: new Date(),
     createdBy: 1,
     type: 'red-flag',
     location: '80.000, 90.000',
@@ -19,7 +19,7 @@ const incidents = [
 
   {
     id: 2,
-    createdOn: '2018-11-28T17:29:56.713Z',
+    createdOn: new Date(),
     createdBy: 13,
     type: 'red-flag',
     location: '70.000, 33.000',
@@ -44,6 +44,37 @@ router.get('/red-flags/:id', (req, res) => {
   return res.status(200).send({
     status: res.statusCode,
     data: redFlag,
+  });
+});
+
+router.post('/red-flags', (req, res) => {
+  const result = Joi.validate(req.body, incidentsSchema);
+
+  if (result.error) {
+    return res.status(400).send({
+      status: res.statusCode,
+      error: result.error.details[0].message,
+    });
+  }
+
+  const incident = {
+    id: incidents[incidents.length - 1].id + 1,
+    createdOn: new Date(),
+    createdBy: req.body.createdBy,
+    type: 'red-flag',
+    location: req.body.location,
+    status: 'draft',
+    comment: req.body.comment,
+  };
+
+  incidents.push(incident);
+
+  return res.status(201).send({
+    status: res.statusCode,
+    data: {
+      id: incident.id,
+      message: 'Created red-flag record',
+    },
   });
 });
 

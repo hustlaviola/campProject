@@ -2,6 +2,8 @@ const express = require('express');
 
 const app = express();
 
+app.use(express.json());
+
 const incidentRouter = require('./routes/incidentsRoute');
 
 app.use('/api/v1', incidentRouter);

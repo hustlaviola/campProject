@@ -44,3 +44,43 @@ describe('/GET/:id red-flag', () => {
       });
   });
 });
+
+/* Test the /POST route */
+
+describe('/POST red-flag', () => {
+  it('it should not POST an incident without TYPE property', (done) => {
+    const incident = {
+      id: 6,
+      createdOn: '2018-11-28T10:25:48.724Z',
+      createdBy: 13,
+      location: '30.000, 33.000',
+      comment: 'New red-flag',
+    };
+    chai.request(server)
+      .post('/api/v1/red-flags')
+      .send(incident)
+      .end((err, res) => {
+        res.should.have.status(400);
+        res.body.should.be.a('object');
+        res.body.should.have.property('error');
+        done();
+      });
+  });
+  it('it should POST a red-flag incident', (done) => {
+    const incident = {
+      createdBy: 56,
+      type: 'red-flag',
+      location: '30.000, 33.000',
+      comment: 'New red-flag',
+    };
+    chai.request(server)
+      .post('/api/v1/red-flags')
+      .send(incident)
+      .end((err, res) => {
+        res.should.have.status(201);
+        res.body.should.be.a('object');
+        res.body.data.should.have.property('message').eql('Created red-flag record');
+        done();
+      });
+  });
+});
