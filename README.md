@@ -1,5 +1,3 @@
-My name is Olatunde Victor a.k.a Viola
-
 This Project is iReporter
 
 Corruption is a huge bane to Africa’s development. African countries must develop novel and
