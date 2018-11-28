@@ -124,3 +124,21 @@ describe('/PATCH/:id/comment red-flag', () => {
       });
   });
 });
+
+/* Test the /DELETE/:id route */
+
+describe('/DELETE/:id  red-flag', () => {
+  it('it should DELETE the red-flag of the given id', (done) => {
+    const redFlag = {
+      id: 2,
+    };
+    chai.request(server)
+      .delete(`/api/v1/red-flags/${redFlag.id}`)
+      .end((err, res) => {
+        res.should.have.status(200);
+        res.body.should.be.a('object');
+        res.body.data.should.have.property('message').eql('red-flag record has been deleted');
+        done();
+      });
+  });
+});
