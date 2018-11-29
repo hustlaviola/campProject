@@ -1,5 +1,7 @@
 const Joi = require('joi');
 
+const image = {};
+const video = {};
 const incidentsSchema = {
   id: Joi.number().integer(),
   createdOn: Joi.date(),
@@ -7,6 +9,8 @@ const incidentsSchema = {
   type: Joi.string().required(),
   location: Joi.string(),
   status: Joi.string(),
+  Images: [image, image],
+  Videos: [video, video],
   comment: Joi.string(),
 };
 

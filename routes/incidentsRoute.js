@@ -64,6 +64,8 @@ router.post('/red-flags', (req, res) => {
     type: 'red-flag',
     location: req.body.location,
     status: 'draft',
+    Images: req.body.Images,
+    Videos: req.body.Videos,
     comment: req.body.comment,
   };
 
