@@ -1,6 +1,6 @@
 const Joi = require('joi');
 
-const userSchema = {
+const usersSchema = {
   id: Joi.number().integer(),
   firstname: Joi.string().required(),
   lastname: Joi.string().required(),
@@ -13,4 +13,4 @@ const userSchema = {
   isAdmin: Joi.boolean(),
 };
 
-module.exports = userSchema;
+module.exports = usersSchema;
