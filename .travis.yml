@@ -2,4 +2,4 @@ language: node_js
 node_js:
   - "10"
   - "node"
-install: travis_wait 30 nvm install
+install: travis_wait nvm install 30
