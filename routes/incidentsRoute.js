@@ -89,7 +89,6 @@ router.patch('/red-flags/:id/location', (req, res) => {
     });
   }
 
-
   const result = Joi.validate(req.body.location, incidentsSchema.location);
   if (result.error) {
     return res.status(400).send({
