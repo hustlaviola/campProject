@@ -38,7 +38,7 @@ router.get('/red-flags/:id', (req, res) => {
   if (!redFlag) {
     return res.status(404).send({
       status: res.statusCode,
-      error: 'Not found',
+      error: 'Red-flag not found',
     });
   }
   return res.status(200).send({
