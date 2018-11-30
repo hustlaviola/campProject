@@ -8,6 +8,8 @@ const incidentRouter = require('./routes/incidentsRoute');
 
 app.use('/api/v1', incidentRouter);
 
+app.use(express.static('UI'));
+
 app.use(express.json());
 
 const PORT = process.env.port || 5000;
