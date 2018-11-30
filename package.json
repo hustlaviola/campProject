@@ -2,10 +2,10 @@
   "name": "campProject",
   "version": "1.0.0",
   "description": "My name is Olatunde Victor a.k.a Viola",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "deploy": "gh-pages -d UI",
-    "test": "mocha"
+    "test": "mocha",
+    "deploy": "gh-pages -d UI"
   },
   "repository": {
     "type": "git",
@@ -22,7 +22,6 @@
     "express": "^4.16.4",
     "gh-pages": "^2.0.1",
     "joi": "^14.3.0",
-    "joi-image-extension": "^1.0.0",
     "nodemon": "^1.18.7"
   },
   "devDependencies": {
