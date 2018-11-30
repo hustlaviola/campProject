@@ -70,7 +70,6 @@ router.post('/red-flags', (req, res) => {
   };
 
   incidents.push(incident);
-
   return res.status(201).send({
     status: res.statusCode,
     data: {
