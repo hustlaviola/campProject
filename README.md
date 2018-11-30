@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/hustlaviola/campProject.svg?branch=feature)](https://travis-ci.org/hustlaviola/campProject)
+
 This Project is iReporter
 
 Corruption is a huge bane to Africa’s development. African countries must develop novel and
