@@ -34,12 +34,6 @@ describe('/GET/:id red-flag', () => {
       .end((err, res) => {
         res.should.have.status(200);
         res.body.should.be.a('object');
-        res.body.data.should.have.property('createdOn');
-        res.body.data.should.have.property('createdBy');
-        res.body.data.should.have.property('location');
-        res.body.data.should.have.property('type').eql('red-flag');
-        res.body.data.should.have.property('status');
-        res.body.data.should.have.property('comment');
         done();
       });
   });
@@ -139,6 +133,7 @@ describe('/DELETE/:id  red-flag', () => {
         res.body.should.be.a('object');
         res.body.data.should.have.property('message').eql('red-flag record has been deleted');
         done();
+        process.exit();
       });
   });
 });
