@@ -144,6 +144,7 @@ router.delete('/red-flags/:id', (req, res) => {
   }
 
   const index = incidents.indexOf(redFlag);
+
   incidents.splice(index, 1);
 
   return res.status(200).send({
