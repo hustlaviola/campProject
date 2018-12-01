@@ -34,6 +34,7 @@ describe('/GET/:id red-flag', () => {
       .end((err, res) => {
         res.should.have.status(200);
         res.body.should.be.a('object');
+        res.body.data.should.be.a('array');
         done();
       });
   });
@@ -47,7 +48,7 @@ describe('/POST red-flag', () => {
       id: 6,
       createdOn: '2018-11-28T10:25:48.724Z',
       createdBy: 13,
-      location: '30.000, 33.000',
+      location: '30.245, 33.455',
       comment: 'New red-flag',
     };
     chai.request(server)
@@ -64,7 +65,7 @@ describe('/POST red-flag', () => {
     const incident = {
       createdBy: 56,
       type: 'red-flag',
-      location: '30.000, 33.000',
+      location: '30.433, 33.461',
       comment: 'New red-flag',
     };
     chai.request(server)
@@ -73,7 +74,8 @@ describe('/POST red-flag', () => {
       .end((err, res) => {
         res.should.have.status(201);
         res.body.should.be.a('object');
-        res.body.data.should.have.property('message').eql('Created red-flag record');
+        res.body.data.should.be.a('array');
+        res.body.data[0].should.have.property('message').eql('Created red-flag record');
         done();
       });
   });
@@ -93,7 +95,8 @@ describe('/PATCH/:id/location red-flag', () => {
       .end((err, res) => {
         res.should.have.status(200);
         res.body.should.be.a('object');
-        res.body.data.should.have.property('message').eql('Updated red-flag record\'s location');
+        res.body.data.should.be.a('array');
+        res.body.data[0].should.have.property('message').eql('Updated red-flag record\'s location');
         done();
       });
   });
@@ -113,7 +116,8 @@ describe('/PATCH/:id/comment red-flag', () => {
       .end((err, res) => {
         res.should.have.status(200);
         res.body.should.be.a('object');
-        res.body.data.should.have.property('message').eql('Updated red-flag record\'s comment');
+        res.body.data.should.be.a('array');
+        res.body.data[0].should.have.property('message').eql('Updated red-flag record\'s comment');
         done();
       });
   });
@@ -131,7 +135,8 @@ describe('/DELETE/:id  red-flag', () => {
       .end((err, res) => {
         res.should.have.status(200);
         res.body.should.be.a('object');
-        res.body.data.should.have.property('message').eql('red-flag record has been deleted');
+        res.body.data.should.be.a('array');
+        res.body.data[0].should.have.property('message').eql('red-flag record has been deleted');
         done();
         process.exit();
       });
