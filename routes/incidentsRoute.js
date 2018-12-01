@@ -22,13 +22,15 @@ router.get('/red-flags', (req, res) => res.status(200).send({
 }));
 
 router.get('/red-flags/:id', (req, res) => {
-  const redFlag = incidents.find(i => i.id === parseInt(req.params.id));
-  if (!redFlag) {
+  const redFlag = [];
+  const incident = incidents.find(i => i.id === parseInt(req.params.id));
+  if (!incident) {
     return res.status(404).send({
       status: res.statusCode,
       error: 'Red-flag not found',
     });
   }
+  redFlag.push(incident);
   return res.status(200).send({
     status: res.statusCode,
     data: redFlag,
@@ -56,14 +58,16 @@ router.post('/red-flags', (req, res) => {
     Videos: req.body.Videos,
     comment: req.body.comment,
   };
-
-  incidents.push(incident);
-  return res.status(201).send({
-    status: res.statusCode,
-    data: {
+  const response = [
+    {
       id: incident.id,
       message: 'Created red-flag record',
     },
+  ];
+  incidents.push(incident);
+  return res.status(201).send({
+    status: res.statusCode,
+    data: response,
   });
 });
 
@@ -85,12 +89,13 @@ router.patch('/red-flags/:id/location', (req, res) => {
   }
 
   redFlag.location = req.body.location;
+  const response = [{
+    id: redFlag.id,
+    message: 'Updated red-flag record\'s location',
+  }];
   return res.status(200).send({
     status: res.statusCode,
-    data: {
-      id: redFlag.id,
-      message: 'Updated red-flag record\'s location',
-    },
+    data: response,
   });
 });
 
@@ -103,7 +108,6 @@ router.patch('/red-flags/:id/comment', (req, res) => {
     });
   }
 
-
   const result = Joi.validate(req.body.comment, incidentsSchema.comment);
   if (result.error) {
     return res.status(400).send({
@@ -113,12 +117,13 @@ router.patch('/red-flags/:id/comment', (req, res) => {
   }
 
   redFlag.comment = req.body.comment;
+  const response = [{
+    id: redFlag.id,
+    message: 'Updated red-flag record\'s comment',
+  }];
   return res.status(200).send({
     status: res.statusCode,
-    data: {
-      id: redFlag.id,
-      message: 'Updated red-flag record\'s comment',
-    },
+    data: response,
   });
 });
 
@@ -134,13 +139,13 @@ router.delete('/red-flags/:id', (req, res) => {
   const index = incidents.indexOf(redFlag);
 
   incidents.splice(index, 1);
-
+  const response = [{
+    id: redFlag.id,
+    message: 'red-flag record has been deleted',
+  }];
   return res.status(200).send({
     status: res.statusCode,
-    data: {
-      id: redFlag.id,
-      message: 'red-flag record has been deleted',
-    },
+    data: response,
   });
 });
 
