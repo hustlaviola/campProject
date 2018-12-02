@@ -108,7 +108,6 @@ router.patch('/red-flags/:id/comment', (req, res) => {
     });
   }
 
-
   const result = Joi.validate(req.body.comment, incidentsSchema.comment);
   if (result.error) {
     return res.status(400).send({
