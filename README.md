@@ -1,6 +1,9 @@
-[![Build Status](https://travis-ci.org/hustlaviola/iReporter.svg?branch=version-1)](https://travis-ci.org/hustlaviola/iReporter)
 
-[![Coverage Status](https://coveralls.io/repos/github/hustlaviola/iReporter/badge.svg?branch=version-1)](https://coveralls.io/github/hustlaviola/iReporter?branch=version-1)
+[![Build Status](https://travis-ci.org/hustlaviola/iReporter.svg?branch=develop)](https://travis-ci.org/hustlaviola/iReporter)
+
+[![Coverage Status](https://coveralls.io/repos/github/hustlaviola/iReporter/badge.svg?branch=develop)](https://coveralls.io/github/hustlaviola/iReporter?branch=develop)
+
+[![Maintainability](https://api.codeclimate.com/v1/badges/22b0da361445b996ceae/maintainability)](https://codeclimate.com/github/hustlaviola/iReporter/maintainability)
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/22b0da361445b996ceae/maintainability)](https://codeclimate.com/github/hustlaviola/iReporter/maintainability)
 
