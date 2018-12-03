@@ -1,10 +1,5 @@
-[![Build Status](https://travis-ci.org/hustlaviola/campProject.svg?branch=master)](https://travis-ci.org/hustlaviola/campProject)
+[![Build Status](https://travis-ci.org/hustlaviola/campProject.svg?branch=develop)](https://travis-ci.org/hustlaviola/campProject)
 
-[![Coverage Status](https://coveralls.io/repos/github/hustlaviola/campProject/badge.svg?branch=master)](https://coveralls.io/github/hustlaviola/campProject?branch=master)
-
-[![Test Coverage](https://api.codeclimate.com/v1/badges/fc16707c4651f656486b/test_coverage)](https://codeclimate.com/github/hustlaviola/campProject/test_coverage)
-
-[![Maintainability](https://api.codeclimate.com/v1/badges/fc16707c4651f656486b/maintainability)](https://codeclimate.com/github/hustlaviola/campProject/maintainability)
 
 This Project is iReporter
 
