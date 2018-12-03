@@ -3,8 +3,6 @@ node_js:
   - "10"
   - "node"
 
-# single test suite, non-parallel build.
-
 env:
   global:
     - CC_TEST_REPORTER_ID=ABC123
