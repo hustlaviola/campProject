@@ -2,6 +2,8 @@
 
 [![Coverage Status](https://coveralls.io/repos/github/hustlaviola/campProject/badge.svg?branch=develop)](https://coveralls.io/github/hustlaviola/campProject?branch=develop)
 
+[![Maintainability](https://api.codeclimate.com/v1/badges/fc16707c4651f656486b/maintainability)](https://codeclimate.com/github/hustlaviola/campProject/maintainability)
+
 
 This Project is iReporter
 
