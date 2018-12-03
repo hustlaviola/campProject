@@ -1,5 +1,7 @@
 [![Build Status](https://travis-ci.org/hustlaviola/campProject.svg?branch=develop)](https://travis-ci.org/hustlaviola/campProject)
 
+[![Coverage Status](https://coveralls.io/repos/github/hustlaviola/campProject/badge.svg?branch=develop)](https://coveralls.io/github/hustlaviola/campProject?branch=develop)
+
 
 This Project is iReporter
 
