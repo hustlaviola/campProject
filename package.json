@@ -6,7 +6,7 @@
   "scripts": {
     "test": "mocha",
     "deploy": "gh-pages -d UI",
-    "coveralls": "nyc npm test && nyc report --reporter=text-lcov | coveralls"
+    "coverage": "nyc npm test && nyc report --reporter=text-lcov | coveralls"
   },
   "repository": {
     "type": "git",
