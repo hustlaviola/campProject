@@ -4,8 +4,9 @@
   "description": "My name is Olatunde Victor a.k.a Viola",
   "main": "server.js",
   "scripts": {
-    "test": "mocha",
-    "deploy": "gh-pages -d UI"
+    "test": "mocha --exit",
+    "deploy": "gh-pages -d UI",
+    "coverage": ""
   },
   "repository": {
     "type": "git",

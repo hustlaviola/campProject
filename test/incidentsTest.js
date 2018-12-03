@@ -138,7 +138,6 @@ describe('/DELETE/:id  red-flag', () => {
         res.body.data.should.be.a('array');
         res.body.data[0].should.have.property('message').eql('red-flag record has been deleted');
         done();
-        process.exit();
       });
   });
 });
