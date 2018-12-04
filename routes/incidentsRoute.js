@@ -149,4 +149,4 @@ router.delete('/red-flags/:id', (req, res) => {
   });
 });
 
-module.exports = router;
+export default router;

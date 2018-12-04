@@ -1,17 +1,18 @@
-const Joi = require('joi');
-
 const image = {};
 const video = {};
-const incidentsSchema = {
-  id: Joi.number().integer(),
-  createdOn: Joi.date(),
-  createdBy: Joi.number().integer(),
-  type: Joi.string().required(),
-  location: Joi.string(),
-  status: Joi.string(),
-  Images: [image, image],
-  Videos: [video, video],
-  comment: Joi.string(),
-};
 
-module.exports = incidentsSchema;
+const incidents = [
+  {
+    id: 1,
+    createdOn: new Date().toISOString(),
+    createdBy: 10,
+    type: 'red-flag',
+    location: '33.005, 23.443',
+    status: 'draft',
+    Images: [image, image],
+    Videos: [video, video],
+    comment: 'Police brutality',
+  },
+];
+
+export default incidents;
