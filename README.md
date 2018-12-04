@@ -5,8 +5,6 @@
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/22b0da361445b996ceae/maintainability)](https://codeclimate.com/github/hustlaviola/iReporter/maintainability)
 
-[![Maintainability](https://api.codeclimate.com/v1/badges/22b0da361445b996ceae/maintainability)](https://codeclimate.com/github/hustlaviola/iReporter/maintainability)
-
 This Project is iReporter
 
 Corruption is a huge bane to Africa’s development. African countries must develop novel and
