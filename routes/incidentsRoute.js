@@ -1,5 +1,3 @@
-const Joi = require('joi');
-
 const express = require('express');
 
 const incidentsSchema = require('../model/incidentsModel');
@@ -149,4 +147,4 @@ router.delete('/red-flags/:id', (req, res) => {
   });
 });
 
-export default router;
+module.exports = router;
