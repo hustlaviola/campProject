@@ -38,6 +38,40 @@ class IncidentsController {
       data: redFlag,
     });
   }
+
+  static postRedFlag(req, res) {
+    const {
+      createdBy, location, Images, Videos, comment,
+    } = req.body;
+
+    const id = incidents.length > 0 ? incidents[incidents.length - 1].id + 1 : incidents.length + 1;
+    const createdOn = new Date().toISOString();
+    const type = 'red-flag';
+    const status = 'draft';
+
+    const redFlag = {
+      id,
+      createdOn,
+      createdBy,
+      type,
+      location,
+      status,
+      Images,
+      Videos,
+      comment,
+    };
+    const response = [
+      {
+        id: redFlag.id,
+        message: 'Created red-flag record',
+      },
+    ];
+    incidents.push(redFlag);
+    return res.status(201).send({
+      status: res.statusCode,
+      data: response,
+    });
+  }
 }
 
 export default IncidentsController;
