@@ -102,3 +102,24 @@ describe('/POST red-flag', () => {
       });
   });
 });
+
+/* Test the /PATCH location route */
+
+describe('/PATCH/:id/location red-flag', () => {
+  it('it should UPDATE the location of the red-flag of the given id', (done) => {
+    const redFlag = {
+      id: 1,
+      location: '44.000, 33.000',
+    };
+    chai.request(app)
+      .patch(`/api/v1/red-flags/${redFlag.id}/location`)
+      .send(redFlag)
+      .end((err, res) => {
+        res.should.have.status(200);
+        res.body.should.be.a('object');
+        res.body.data.should.be.a('array');
+        res.body.data[0].should.have.property('message').eql('Updated red-flag record\'s location');
+        done(err);
+      });
+  });
+});

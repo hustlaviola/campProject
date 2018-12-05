@@ -45,7 +45,7 @@ class IncidentsController {
     } = req.body;
 
     const id = incidents.length > 0 ? incidents[incidents.length - 1].id + 1 : incidents.length + 1;
-    const createdOn = new Date().toISOString();
+    const createdOn = new Date();
     const type = 'red-flag';
     const status = 'draft';
 
@@ -68,6 +68,20 @@ class IncidentsController {
     ];
     incidents.push(redFlag);
     return res.status(201).send({
+      status: res.statusCode,
+      data: response,
+    });
+  }
+
+  static updateLocation(req, res) {
+    const redFlag = incidents.find(i => i.id === parseInt(req.params.id));
+
+    redFlag.location = req.body.location;
+    const response = [{
+      id: redFlag.id,
+      message: 'Updated red-flag record\'s location',
+    }];
+    return res.status(200).send({
       status: res.statusCode,
       data: response,
     });
