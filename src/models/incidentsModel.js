@@ -1,6 +1,3 @@
-const image = {};
-const video = {};
-
 const incidents = [
   {
     id: 1,
@@ -9,8 +6,8 @@ const incidents = [
     type: 'red-flag',
     location: '33.005, 23.443',
     status: 'draft',
-    Images: [image, image],
-    Videos: [video, video],
+    Images: ['img', 'img2'],
+    Videos: ['vid', 'vid2'],
     comment: 'Police brutality',
   },
 ];
