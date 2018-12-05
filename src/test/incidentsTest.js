@@ -4,7 +4,7 @@ import app from '../index';
 
 chai.use(chaiHttp);
 
-const { should } = chai;
+const should = chai.should();
 
 
 /* Test the GET route */
