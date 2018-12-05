@@ -6,6 +6,10 @@ const app = express();
 
 app.use(express.json());
 
+app.get('/', (req, res) => {
+  res.status(200).send('Welcome to iReporter');
+});
+
 app.use('/api/v1', router);
 
 app.use(express.static('UI'));
