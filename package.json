@@ -6,7 +6,7 @@
   "scripts": {
     "lint": "eslint ./src --fix",
     "start": "babel-node ./src/index.js",
-    "test": "nyc mocha --require babel-register ./src/test --exit",
+    "test": "nyc mocha --require babel-polyfill --require babel-register ./src/test --exit",
     "deploy": "gh-pages -d UI",
     "coverage": "nyc npm test && nyc report --reporter=text-lcov | coveralls"
   },
@@ -31,6 +31,7 @@
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
+    "babel-polyfill": "^6.26.0",
     "babel-register": "^6.26.0",
     "coveralls": "^3.0.2",
     "eslint": "^5.9.0",
