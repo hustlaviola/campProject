@@ -86,6 +86,20 @@ class IncidentsController {
       data: response,
     });
   }
+
+  static updateComment(req, res) {
+    const redFlag = incidents.find(i => i.id === parseInt(req.params.id));
+
+    redFlag.comment = req.body.comment;
+    const response = [{
+      id: redFlag.id,
+      message: 'Updated red-flag record\'s comment',
+    }];
+    return res.status(200).send({
+      status: res.statusCode,
+      data: response,
+    });
+  }
 }
 
 export default IncidentsController;

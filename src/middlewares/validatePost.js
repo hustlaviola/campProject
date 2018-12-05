@@ -42,6 +42,26 @@ class Validate {
 
     return next();
   }
+
+  static validateCommentUpdate(req, res, next) {
+    const redFlag = incidents.find(i => i.id === parseInt(req.params.id));
+    const { comment } = req.body;
+
+    if (!redFlag) {
+      return res.status(404).send({
+        status: res.statusCode,
+        error: 'Red-flag record not found',
+      });
+    }
+    if (!comment) {
+      return res.status(400).send({
+        status: res.statusCode,
+        error: 'Please add a new comment',
+      });
+    }
+
+    return next();
+  }
 }
 
 export default Validate;

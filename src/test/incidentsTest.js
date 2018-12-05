@@ -153,3 +153,54 @@ describe('/PATCH/:id/location red-flag', () => {
       });
   });
 });
+
+/* Test the /PATCH comment route */
+
+describe('/PATCH/:id/comment red-flag', () => {
+  it('it should return an error if the red-flag record doesn\'t exist', (done) => {
+    const redFlag = {
+      id: 11,
+      comment: '44.000, 33.000',
+    };
+    chai.request(app)
+      .patch(`/api/v1/red-flags/${redFlag.id}/comment`)
+      .send(redFlag)
+      .end((err, res) => {
+        res.should.have.status(404);
+        res.body.should.be.an('object');
+        res.body.should.have.property('error').eql('Red-flag record not found');
+        done(err);
+      });
+  });
+  it('it should return an error if comment field is empty', (done) => {
+    const redFlag = {
+      id: 1,
+      comment: '',
+    };
+    chai.request(app)
+      .patch(`/api/v1/red-flags/${redFlag.id}/comment`)
+      .send(redFlag)
+      .end((err, res) => {
+        res.should.have.status(400);
+        res.body.should.be.an('object');
+        res.body.should.have.property('error').eql('Please add a new comment');
+        done(err);
+      });
+  });
+  it('it should UPDATE the comment of the red-flag of the given id', (done) => {
+    const redFlag = {
+      id: 1,
+      comment: '44.000, 33.000',
+    };
+    chai.request(app)
+      .patch(`/api/v1/red-flags/${redFlag.id}/comment`)
+      .send(redFlag)
+      .end((err, res) => {
+        res.should.have.status(200);
+        res.body.should.be.an('object');
+        res.body.data.should.be.an('array');
+        res.body.data[0].should.have.property('message').eql('Updated red-flag record\'s comment');
+        done(err);
+      });
+  });
+});
