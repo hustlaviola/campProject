@@ -26,12 +26,7 @@ class IncidentsController {
   static getRedFlag(req, res) {
     const redFlag = [];
     const incident = incidents.find(i => i.id === parseInt(req.params.id));
-    if (!incident || incident.type !== 'red-flag') {
-      return res.status(404).send({
-        status: res.statusCode,
-        error: 'Red-flag not found',
-      });
-    }
+
     redFlag.push(incident);
     return res.status(200).send({
       status: res.statusCode,
@@ -94,6 +89,22 @@ class IncidentsController {
     const response = [{
       id: redFlag.id,
       message: 'Updated red-flag record\'s comment',
+    }];
+    return res.status(200).send({
+      status: res.statusCode,
+      data: response,
+    });
+  }
+
+  static deleteRedFlag(req, res) {
+    const redFlag = incidents.find(i => i.id === parseInt(req.params.id));
+
+    const index = incidents.indexOf(redFlag);
+
+    incidents.splice(index, 1);
+    const response = [{
+      id: redFlag.id,
+      message: 'red-flag record has been deleted',
     }];
     return res.status(200).send({
       status: res.statusCode,

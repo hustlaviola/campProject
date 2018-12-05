@@ -25,6 +25,19 @@ describe('/GET red-flag', () => {
 /* Test the /GET/:id route */
 
 describe('/GET/:id red-flag', () => {
+  it('it should return an error if there is no red flag record', (done) => {
+    const redFlag = {
+      id: 11,
+    };
+    chai.request(app)
+      .get(`/api/v1/red-flags/${redFlag.id}`)
+      .end((err, res) => {
+        res.should.have.status(404);
+        res.body.should.be.an('object');
+        res.body.should.have.property('error').eql('Red-flag record not found');
+        done(err);
+      });
+  });
   it('it should GET a red-flag of the given id', (done) => {
     const redFlag = {
       id: 1,
@@ -36,19 +49,6 @@ describe('/GET/:id red-flag', () => {
         res.body.should.be.an('object');
         res.body.data.should.be.an('array');
         res.body.should.have.property('data');
-        done(err);
-      });
-  });
-  it('it should return an error if there is no red flag record', (done) => {
-    const redFlag = {
-      id: 11,
-    };
-    chai.request(app)
-      .get(`/api/v1/red-flags/${redFlag.id}`)
-      .end((err, res) => {
-        res.should.have.status(404);
-        res.body.should.be.an('object');
-        res.body.should.have.property('error').eql('Red-flag not found');
         done(err);
       });
   });
@@ -200,6 +200,38 @@ describe('/PATCH/:id/comment red-flag', () => {
         res.body.should.be.an('object');
         res.body.data.should.be.an('array');
         res.body.data[0].should.have.property('message').eql('Updated red-flag record\'s comment');
+        done(err);
+      });
+  });
+});
+
+/* Test the /DELETE/:id route */
+
+describe('/DELETE/:id  red-flag', () => {
+  it('it should return an error if red-flag record doesn\'t exist', (done) => {
+    const redFlag = {
+      id: 11,
+    };
+    chai.request(app)
+      .delete(`/api/v1/red-flags/${redFlag.id}`)
+      .end((err, res) => {
+        res.should.have.status(404);
+        res.body.should.be.an('object');
+        res.body.should.have.property('error').eql('Red-flag record not found');
+        done(err);
+      });
+  });
+  it('it should DELETE the red-flag of the given id', (done) => {
+    const redFlag = {
+      id: 1,
+    };
+    chai.request(app)
+      .delete(`/api/v1/red-flags/${redFlag.id}`)
+      .end((err, res) => {
+        res.should.have.status(200);
+        res.body.should.be.an('object');
+        res.body.data.should.be.an('array');
+        res.body.data[0].should.have.property('message').eql('red-flag record has been deleted');
         done(err);
       });
   });

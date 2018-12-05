@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "babel-node ./src/index.js",
-    "test": "mocha --require babel-register ./src/test --exit",
+    "test": "nyc mocha --require babel-register ./src/test --exit",
     "deploy": "gh-pages -d UI",
     "coverage": "nyc npm test && nyc report --reporter=text-lcov | coveralls"
   },
