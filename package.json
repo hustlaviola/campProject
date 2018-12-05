@@ -4,6 +4,7 @@
   "description": "My name is Olatunde Victor a.k.a Viola",
   "main": "index.js",
   "scripts": {
+    "lint": "eslint ./src --fix",
     "start": "babel-node ./src/index.js",
     "test": "nyc mocha --require babel-register ./src/test --exit",
     "deploy": "gh-pages -d UI",
