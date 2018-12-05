@@ -8,7 +8,7 @@ const incidents = [
     status: 'draft',
     Images: ['img', 'img2'],
     Videos: ['vid', 'vid2'],
-    comment: 'Police brutality',
+    comment: 'Police Corruption and brutality',
   },
 ];
 
