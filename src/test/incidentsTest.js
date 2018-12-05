@@ -15,7 +15,7 @@ describe('/GET red-flag', () => {
       .get('/api/v1/red-flags')
       .end((err, res) => {
         res.should.have.status(200);
-        res.body.data.should.be.a('array');
+        res.body.data.should.be.an('array');
         res.body.should.have.property('data');
         done(err);
       });
@@ -33,8 +33,8 @@ describe('/GET/:id red-flag', () => {
       .get(`/api/v1/red-flags/${redFlag.id}`)
       .end((err, res) => {
         res.should.have.status(200);
-        res.body.should.be.a('object');
-        res.body.data.should.be.a('array');
+        res.body.should.be.an('object');
+        res.body.data.should.be.an('array');
         res.body.should.have.property('data');
         done(err);
       });
@@ -47,7 +47,7 @@ describe('/GET/:id red-flag', () => {
       .get(`/api/v1/red-flags/${redFlag.id}`)
       .end((err, res) => {
         res.should.have.status(404);
-        res.body.should.be.a('object');
+        res.body.should.be.an('object');
         res.body.should.have.property('error').eql('Red-flag not found');
         done(err);
       });
@@ -66,7 +66,7 @@ describe('/POST red-flag', () => {
       .send(redFlag)
       .end((err, res) => {
         res.should.have.status(400);
-        res.body.should.be.a('object');
+        res.body.should.be.an('object');
         res.body.should.have.property('error').eql('Please add a location');
         done(err);
       });
@@ -80,7 +80,7 @@ describe('/POST red-flag', () => {
       .send(redFlag)
       .end((err, res) => {
         res.should.have.status(400);
-        res.body.should.be.a('object');
+        res.body.should.be.an('object');
         res.body.should.have.property('error').eql('Please add a comment');
         done(err);
       });
@@ -95,8 +95,8 @@ describe('/POST red-flag', () => {
       .send(incident)
       .end((err, res) => {
         res.should.have.status(201);
-        res.body.should.be.a('object');
-        res.body.data.should.be.a('array');
+        res.body.should.be.an('object');
+        res.body.data.should.be.an('array');
         res.body.data[0].should.have.property('message').eql('Created red-flag record');
         done(err);
       });
@@ -106,6 +106,36 @@ describe('/POST red-flag', () => {
 /* Test the /PATCH location route */
 
 describe('/PATCH/:id/location red-flag', () => {
+  it('it should return an error if the red-flag record doesn\'t exist', (done) => {
+    const redFlag = {
+      id: 11,
+      location: '44.000, 33.000',
+    };
+    chai.request(app)
+      .patch(`/api/v1/red-flags/${redFlag.id}/location`)
+      .send(redFlag)
+      .end((err, res) => {
+        res.should.have.status(404);
+        res.body.should.be.an('object');
+        res.body.should.have.property('error').eql('Red-flag record not found');
+        done(err);
+      });
+  });
+  it('it should return an error if location field is empty', (done) => {
+    const redFlag = {
+      id: 1,
+      location: '',
+    };
+    chai.request(app)
+      .patch(`/api/v1/red-flags/${redFlag.id}/location`)
+      .send(redFlag)
+      .end((err, res) => {
+        res.should.have.status(400);
+        res.body.should.be.an('object');
+        res.body.should.have.property('error').eql('Please add a new location');
+        done(err);
+      });
+  });
   it('it should UPDATE the location of the red-flag of the given id', (done) => {
     const redFlag = {
       id: 1,
@@ -116,8 +146,8 @@ describe('/PATCH/:id/location red-flag', () => {
       .send(redFlag)
       .end((err, res) => {
         res.should.have.status(200);
-        res.body.should.be.a('object');
-        res.body.data.should.be.a('array');
+        res.body.should.be.an('object');
+        res.body.data.should.be.an('array');
         res.body.data[0].should.have.property('message').eql('Updated red-flag record\'s location');
         done(err);
       });
