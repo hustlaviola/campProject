@@ -4,10 +4,7 @@
   "description": "My name is Olatunde Victor a.k.a Viola",
   "main": "index.js",
   "scripts": {
-    "clean": "rm -rf build && mkdir build",
-    "build-babel": "babel -d ./build ./src -s",
-    "build": "npm run clean && npm run build-babel",
-    "start": "npm run build && node ./build/index.js",
+    "start": "babel-node ./src/index.js",
     "test": "nyc mocha --require babel-register ./src/test --exit",
     "coverage": "nyc npm test && nyc report --reporter=text-lcov | coveralls"
   },
@@ -27,12 +24,12 @@
     "chai": "^4.2.0",
     "chai-http": "^4.2.0",
     "express": "^4.16.4",
-    "nodemon": "^1.18.7"
-  },
-  "devDependencies": {
+    "nodemon": "^1.18.7",
     "babel-cli": "^6.26.0",
     "babel-polyfill": "^6.26.0",
-    "babel-register": "^6.26.0",
+    "babel-register": "^6.26.0"
+  },
+  "devDependencies": {
     "coveralls": "^3.0.2",
     "eslint": "^5.9.0",
     "eslint-config-airbnb-base": "^13.1.0",
