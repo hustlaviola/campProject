@@ -11,11 +11,9 @@ app.get('/', (req, res) => {
 
 app.use('/api/v1', router);
 
-app.use(express.static('UI'));
-
 app.use(express.json());
 
-const PORT = process.env.port || 5000;
+const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.info(`listening on port ${PORT}...`));
 
 export default app;
