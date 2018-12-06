@@ -4,7 +4,7 @@
   "description": "My name is Olatunde Victor a.k.a Viola",
   "main": "index.js",
   "scripts": {
-    "start": "babel-node ./src/index.js",
+    "start": "node --exec babel-node ./src/index.js",
     "test": "nyc mocha --require babel-register ./src/test --exit",
     "coverage": "nyc npm test && nyc report --reporter=text-lcov | coveralls"
   },
