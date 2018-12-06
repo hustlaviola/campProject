@@ -25,7 +25,7 @@ class IncidentsController {
 
   static getRedFlag(req, res) {
     const redFlag = [];
-    const incident = incidents.find(i => i.id === parseInt(req.params.id));
+    const incident = incidents.find(i => i.id === parseInt(req.params.id, 10));
 
     redFlag.push(incident);
     return res.status(200).send({
@@ -69,7 +69,7 @@ class IncidentsController {
   }
 
   static updateLocation(req, res) {
-    const redFlag = incidents.find(i => i.id === parseInt(req.params.id));
+    const redFlag = incidents.find(i => i.id === parseInt(req.params.id, 10));
 
     redFlag.location = req.body.location;
     const response = [{
@@ -83,7 +83,7 @@ class IncidentsController {
   }
 
   static updateComment(req, res) {
-    const redFlag = incidents.find(i => i.id === parseInt(req.params.id));
+    const redFlag = incidents.find(i => i.id === parseInt(req.params.id, 10));
 
     redFlag.comment = req.body.comment;
     const response = [{
@@ -97,7 +97,7 @@ class IncidentsController {
   }
 
   static deleteRedFlag(req, res) {
-    const redFlag = incidents.find(i => i.id === parseInt(req.params.id));
+    const redFlag = incidents.find(i => i.id === parseInt(req.params.id, 10));
 
     const index = incidents.indexOf(redFlag);
 
