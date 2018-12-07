@@ -18,7 +18,8 @@ class IncidentsController {
 
   static getRedFlag(req, res) {
     const redFlag = [];
-    const redFlagIncident = incidents.find(incident => incident.id === parseInt(req.params.id, 10));
+    const redFlagIncident = incidents
+      .find(incident => incident.id === parseInt(req.params.id, 10));
 
     redFlag.push(redFlagIncident);
     return res.status(200).send({
@@ -32,7 +33,8 @@ class IncidentsController {
       createdBy, location, Images, Videos, comment,
     } = req.body;
 
-    const id = incidents.length > 0 ? incidents[incidents.length - 1].id + 1 : incidents.length + 1;
+    const id = incidents.length > 0
+      ? incidents[incidents.length - 1].id + 1 : incidents.length + 1;
     const createdOn = new Date();
     const type = 'red-flag';
     const status = 'draft';
@@ -62,7 +64,8 @@ class IncidentsController {
   }
 
   static updateLocation(req, res) {
-    const redFlag = incidents.find(incident => incident.id === parseInt(req.params.id, 10));
+    const redFlag = incidents
+      .find(incident => incident.id === parseInt(req.params.id, 10));
 
     redFlag.location = req.body.location;
     const response = [{
@@ -76,7 +79,8 @@ class IncidentsController {
   }
 
   static updateComment(req, res) {
-    const redFlag = incidents.find(incident => incident.id === parseInt(req.params.id, 10));
+    const redFlag = incidents
+      .find(incident => incident.id === parseInt(req.params.id, 10));
 
     redFlag.comment = req.body.comment;
     const response = [{
@@ -90,7 +94,8 @@ class IncidentsController {
   }
 
   static deleteRedFlag(req, res) {
-    const redFlag = incidents.find(incident => incident.id === parseInt(req.params.id, 10));
+    const redFlag = incidents
+      .find(incident => incident.id === parseInt(req.params.id, 10));
 
     const index = incidents.indexOf(redFlag);
 

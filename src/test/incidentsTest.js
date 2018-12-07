@@ -5,7 +5,8 @@ import app from '../index';
 
 chai.use(chaiHttp);
 
-const should = chai.should();
+// eslint-disable-next-line no-unused-vars
+const { should } = chai.should();
 
 
 /* Test the GET route */
@@ -98,7 +99,8 @@ describe('/POST red-flag', () => {
         res.should.have.status(201);
         res.body.should.be.an('object');
         res.body.data.should.be.an('array');
-        res.body.data[0].should.have.property('message').eql('Created red-flag record');
+        res.body.data[0].should.have.property('message')
+          .eql('Created red-flag record');
         done(err);
       });
   });
@@ -107,21 +109,23 @@ describe('/POST red-flag', () => {
 /* Test the /PATCH location route */
 
 describe('/PATCH/:id/location red-flag', () => {
-  it('it should return an error if the red-flag record doesn\'t exist', (done) => {
-    const redFlag = {
-      id: 11,
-      location: '44.000, 33.000',
-    };
-    chai.request(app)
-      .patch(`/api/v1/red-flags/${redFlag.id}/location`)
-      .send(redFlag)
-      .end((err, res) => {
-        res.should.have.status(404);
-        res.body.should.be.an('object');
-        res.body.should.have.property('error').eql('Red-flag record not found');
-        done(err);
-      });
-  });
+  it('it should return an error if the red-flag record doesn\'t exist',
+    (done) => {
+      const redFlag = {
+        id: 11,
+        location: '44.000, 33.000',
+      };
+      chai.request(app)
+        .patch(`/api/v1/red-flags/${redFlag.id}/location`)
+        .send(redFlag)
+        .end((err, res) => {
+          res.should.have.status(404);
+          res.body.should.be.an('object');
+          res.body.should.have.property('error')
+            .eql('Red-flag record not found');
+          done(err);
+        });
+    });
   it('it should return an error if location field is empty', (done) => {
     const redFlag = {
       id: 1,
@@ -137,42 +141,46 @@ describe('/PATCH/:id/location red-flag', () => {
         done(err);
       });
   });
-  it('it should UPDATE the location of the red-flag of the given id', (done) => {
-    const redFlag = {
-      id: 1,
-      location: '44.000, 33.000',
-    };
-    chai.request(app)
-      .patch(`/api/v1/red-flags/${redFlag.id}/location`)
-      .send(redFlag)
-      .end((err, res) => {
-        res.should.have.status(200);
-        res.body.should.be.an('object');
-        res.body.data.should.be.an('array');
-        res.body.data[0].should.have.property('message').eql('Updated red-flag record\'s location');
-        done(err);
-      });
-  });
+  it('it should UPDATE the location of the red-flag of the given id',
+    (done) => {
+      const redFlag = {
+        id: 1,
+        location: '44.000, 33.000',
+      };
+      chai.request(app)
+        .patch(`/api/v1/red-flags/${redFlag.id}/location`)
+        .send(redFlag)
+        .end((err, res) => {
+          res.should.have.status(200);
+          res.body.should.be.an('object');
+          res.body.data.should.be.an('array');
+          res.body.data[0].should.have.property('message')
+            .eql('Updated red-flag record\'s location');
+          done(err);
+        });
+    });
 });
 
 /* Test the /PATCH comment route */
 
 describe('/PATCH/:id/comment red-flag', () => {
-  it('it should return an error if the red-flag record doesn\'t exist', (done) => {
-    const redFlag = {
-      id: 11,
-      comment: '44.000, 33.000',
-    };
-    chai.request(app)
-      .patch(`/api/v1/red-flags/${redFlag.id}/comment`)
-      .send(redFlag)
-      .end((err, res) => {
-        res.should.have.status(404);
-        res.body.should.be.an('object');
-        res.body.should.have.property('error').eql('Red-flag record not found');
-        done(err);
-      });
-  });
+  it('it should return an error if the red-flag record doesn\'t exist',
+    (done) => {
+      const redFlag = {
+        id: 11,
+        comment: '44.000, 33.000',
+      };
+      chai.request(app)
+        .patch(`/api/v1/red-flags/${redFlag.id}/comment`)
+        .send(redFlag)
+        .end((err, res) => {
+          res.should.have.status(404);
+          res.body.should.be.an('object');
+          res.body.should.have.property('error')
+            .eql('Red-flag record not found');
+          done(err);
+        });
+    });
   it('it should return an error if comment field is empty', (done) => {
     const redFlag = {
       id: 1,
@@ -188,52 +196,58 @@ describe('/PATCH/:id/comment red-flag', () => {
         done(err);
       });
   });
-  it('it should UPDATE the comment of the red-flag of the given id', (done) => {
-    const redFlag = {
-      id: 1,
-      comment: '44.000, 33.000',
-    };
-    chai.request(app)
-      .patch(`/api/v1/red-flags/${redFlag.id}/comment`)
-      .send(redFlag)
-      .end((err, res) => {
-        res.should.have.status(200);
-        res.body.should.be.an('object');
-        res.body.data.should.be.an('array');
-        res.body.data[0].should.have.property('message').eql('Updated red-flag record\'s comment');
-        done(err);
-      });
-  });
+  it('it should UPDATE the comment of the red-flag of the given id',
+    (done) => {
+      const redFlag = {
+        id: 1,
+        comment: '44.000, 33.000',
+      };
+      chai.request(app)
+        .patch(`/api/v1/red-flags/${redFlag.id}/comment`)
+        .send(redFlag)
+        .end((err, res) => {
+          res.should.have.status(200);
+          res.body.should.be.an('object');
+          res.body.data.should.be.an('array');
+          res.body.data[0].should.have.property('message')
+            .eql('Updated red-flag record\'s comment');
+          done(err);
+        });
+    });
 });
 
 /* Test the /DELETE/:id route */
 
 describe('/DELETE/:id  red-flag', () => {
-  it('it should return an error if red-flag record doesn\'t exist', (done) => {
-    const redFlag = {
-      id: 11,
-    };
-    chai.request(app)
-      .delete(`/api/v1/red-flags/${redFlag.id}`)
-      .end((err, res) => {
-        res.should.have.status(404);
-        res.body.should.be.an('object');
-        res.body.should.have.property('error').eql('Red-flag record not found');
-        done(err);
-      });
-  });
-  it('it should DELETE the red-flag of the given id', (done) => {
-    const redFlag = {
-      id: 1,
-    };
-    chai.request(app)
-      .delete(`/api/v1/red-flags/${redFlag.id}`)
-      .end((err, res) => {
-        res.should.have.status(202);
-        res.body.should.be.an('object');
-        res.body.data.should.be.an('array');
-        res.body.data[0].should.have.property('message').eql('red-flag record has been deleted');
-        done(err);
-      });
-  });
+  it('it should return an error if red-flag record doesn\'t exist',
+    (done) => {
+      const redFlag = {
+        id: 11,
+      };
+      chai.request(app)
+        .delete(`/api/v1/red-flags/${redFlag.id}`)
+        .end((err, res) => {
+          res.should.have.status(404);
+          res.body.should.be.an('object');
+          res.body.should.have.property('error')
+            .eql('Red-flag record not found');
+          done(err);
+        });
+    });
+  it('it should DELETE the red-flag of the given id',
+    (done) => {
+      const redFlag = {
+        id: 1,
+      };
+      chai.request(app)
+        .delete(`/api/v1/red-flags/${redFlag.id}`)
+        .end((err, res) => {
+          res.should.have.status(202);
+          res.body.should.be.an('object');
+          res.body.data.should.be.an('array');
+          res.body.data[0].should.have.property('message')
+            .eql('red-flag record has been deleted');
+          done(err);
+        });
+    });
 });

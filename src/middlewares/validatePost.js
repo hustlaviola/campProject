@@ -9,7 +9,8 @@ class Validate {
         error: 'Invalid Id, Please input a number',
       });
     }
-    const redFlag = incidents.find(incident => incident.id === parseInt(req.params.id, 10));
+    const redFlag = incidents
+      .find(incident => incident.id === parseInt(req.params.id, 10));
     if (!redFlag) {
       return res.status(404).send({
         status: res.statusCode,
