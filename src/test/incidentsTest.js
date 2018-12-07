@@ -2,6 +2,7 @@ import chai from 'chai';
 import chaiHttp from 'chai-http';
 import app from '../index';
 
+
 chai.use(chaiHttp);
 
 const should = chai.should();
@@ -228,7 +229,7 @@ describe('/DELETE/:id  red-flag', () => {
     chai.request(app)
       .delete(`/api/v1/red-flags/${redFlag.id}`)
       .end((err, res) => {
-        res.should.have.status(200);
+        res.should.have.status(202);
         res.body.should.be.an('object');
         res.body.data.should.be.an('array');
         res.body.data[0].should.have.property('message').eql('red-flag record has been deleted');
