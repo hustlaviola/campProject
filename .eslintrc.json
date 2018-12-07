@@ -2,9 +2,8 @@
     "extends": "airbnb",
 
     "rules" : {
-        "code": 50,
-        "ignoreStrings": false,
-        "max-len": ["error", { "code": 80 }]
+        "max-len": ["error", { "code": 80 }],
+        "linebreak-style": 0
     },
 
     "env": {
