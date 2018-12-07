@@ -1,3 +1,20 @@
 {
-    "extends": "airbnb-base"
+    "extends": "airbnb",
+
+    "rules" : {
+        "code": 50,
+        "ignoreStrings": false,
+        "max-len": ["error", { "code": 80 }]
+    },
+
+    "env": {
+        "browser": true,
+        "es6": true,
+        "node": true,
+        "mocha": true
+    },
+
+    "parserOptions": { "ecmaVersion": 6 }
+
+
 }

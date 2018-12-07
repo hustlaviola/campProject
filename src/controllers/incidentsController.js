@@ -10,13 +10,6 @@ class IncidentsController {
       }
     });
 
-    if (redFlags.length === 0) {
-      return res.status(404).send({
-        status: res.statusCode,
-        error: 'Red-flag records empty',
-      });
-    }
-
     return res.status(200).send({
       status: res.statusCode,
       data: redFlags,
@@ -25,9 +18,10 @@ class IncidentsController {
 
   static getRedFlag(req, res) {
     const redFlag = [];
-    const incident = incidents.find(i => i.id === parseInt(req.params.id, 10));
+    const redFlagIncident = incidents
+      .find(incident => incident.id === parseInt(req.params.id, 10));
 
-    redFlag.push(incident);
+    redFlag.push(redFlagIncident);
     return res.status(200).send({
       status: res.statusCode,
       data: redFlag,
@@ -39,7 +33,8 @@ class IncidentsController {
       createdBy, location, Images, Videos, comment,
     } = req.body;
 
-    const id = incidents.length > 0 ? incidents[incidents.length - 1].id + 1 : incidents.length + 1;
+    const id = incidents.length > 0
+      ? incidents[incidents.length - 1].id + 1 : incidents.length + 1;
     const createdOn = new Date();
     const type = 'red-flag';
     const status = 'draft';
@@ -69,7 +64,8 @@ class IncidentsController {
   }
 
   static updateLocation(req, res) {
-    const redFlag = incidents.find(i => i.id === parseInt(req.params.id, 10));
+    const redFlag = incidents
+      .find(incident => incident.id === parseInt(req.params.id, 10));
 
     redFlag.location = req.body.location;
     const response = [{
@@ -83,7 +79,8 @@ class IncidentsController {
   }
 
   static updateComment(req, res) {
-    const redFlag = incidents.find(i => i.id === parseInt(req.params.id, 10));
+    const redFlag = incidents
+      .find(incident => incident.id === parseInt(req.params.id, 10));
 
     redFlag.comment = req.body.comment;
     const response = [{
@@ -97,7 +94,8 @@ class IncidentsController {
   }
 
   static deleteRedFlag(req, res) {
-    const redFlag = incidents.find(i => i.id === parseInt(req.params.id, 10));
+    const redFlag = incidents
+      .find(incident => incident.id === parseInt(req.params.id, 10));
 
     const index = incidents.indexOf(redFlag);
 
@@ -106,7 +104,7 @@ class IncidentsController {
       id: redFlag.id,
       message: 'red-flag record has been deleted',
     }];
-    return res.status(200).send({
+    return res.status(202).send({
       status: res.statusCode,
       data: response,
     });
