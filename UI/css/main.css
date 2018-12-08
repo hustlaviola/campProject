@@ -2,8 +2,8 @@ body{
     background: url('../img/light-wallpaper.jpg');
     font: 15px/1.5 Arial, Helvetica, sans-serif;
     padding: 0;
-    margin: 0;
-    color: #d32f2f;
+    margin: 0 auto;
+    color: #fff;
 }
 
 /* Globals */
@@ -26,6 +26,7 @@ body{
     width: 80%;
     margin: auto;
     overflow: hidden;
+    text-align: center;
 }
 
 div a {
@@ -49,6 +50,45 @@ p a{
 
 p a:hover {
     color: #009688;
+}
+
+/* Cards */
+.card {
+    width: 250px;
+    height: 450px;
+    text-align: center;
+    margin: 30px 0px 0px 30px;
+    background: rgba(0, 0, 0, 0.8);
+    box-sizing: border-box;
+    padding: 20px;
+    border-radius: 5%;
+    float: left;
+}
+
+#cards {
+    width: 100px;
+    height: auto;
+}
+
+h2, h3 {
+    text-align: center;
+    padding: 10px;
+    margin-left: 10px;
+}
+#draft {
+    color: yellow;
+}
+
+#resolved {
+    color: green;
+}
+
+#rejected {
+    color: red;
+}
+
+.location {
+    color: #60adde;
 }
 
 /* Top */
@@ -89,9 +129,9 @@ input[type=text], input[type=file], textarea {
 }
 
 input[type=submit], button {
-    width: 25%;
+    width: 40%;
     box-sizing: border-box;
-    padding: 10px 0;
+    padding: 10px 10px;
     margin-top: 30px;
     outline: none;
     border: none;
@@ -115,13 +155,6 @@ footer {
     font-size: 25px;
 }
 
-footer {
-    padding: 20px;
-    margin-top: 20px;
-    text-align: center;
-    font-size: 25px;
-}
-
 
 
 @media(max-width: 768px) {
@@ -130,7 +163,7 @@ footer {
         text-align: center;
         width: 100%;
     }
-	.wrap {
+	.wrap .card {
 		width: 90%;
 		font-size: 15px;
 		padding: 15px;
