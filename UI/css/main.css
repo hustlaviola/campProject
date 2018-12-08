@@ -2,7 +2,7 @@ body{
     background: url('../img/light-wallpaper.jpg');
     font: 15px/1.5 Arial, Helvetica, sans-serif;
     padding: 0;
-    margin: 0 auto;
+    margin: 0;
     color: #fff;
 }
 
@@ -78,10 +78,11 @@ h2, h3 {
 
 .red {
     color: red;
+    font-size: 40px;
 }
 
 .green {
-    color: green;
+    font-size: 40px;
 }
 
 #draft {
