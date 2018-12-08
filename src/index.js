@@ -5,7 +5,7 @@ const app = express();
 
 app.use(express.json());
 
-app.get('/', (req, res) => {
+app.get('/api/v1', (req, res) => {
   res.status(200).send('Welcome to iReporter');
 });
 
@@ -21,6 +21,6 @@ app.all('/*', (req, res) => {
 });
 
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.info(`listening on port ${PORT}...`));
+app.listen(PORT, () => console.info(`listening on port ${PORT}... `));
 
 export default app;
