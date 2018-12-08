@@ -30,13 +30,14 @@ class IncidentsController {
 
   static postRedFlag(req, res) {
     const {
-      createdBy, location, Images, Videos, comment,
+      createdBy, latitude, longitude, Images, Videos, comment,
     } = req.body;
 
     const id = incidents.length > 0
       ? incidents[incidents.length - 1].id + 1 : incidents.length + 1;
     const createdOn = new Date();
     const type = 'red-flag';
+    const location = `${latitude}, ${longitude}`
     const status = 'draft';
 
     const redFlag = {

@@ -44,7 +44,29 @@ class Validate {
   }
 
   static validateLocationUpdate(req, res, next) {
-    const { location } = req.body;
+    const { latitude, longitude } = req.body;
+
+    const latitudeRegEx = /^[-+]?([1-8]?[0-9][.]([0-9]+)|90[.](0+))$/
+    const longitudeRegEX = /^[-+]?((1[0-7][0-9])|([1-9]?[0-9]))[.]([0-9]+)|(180)[.](0+)/;
+
+    latitude = latitudeRegEx.test(latitude);
+    longitude = longitudeRegEX.test(longitude);
+
+    if (!latitude) {
+      return res.status(422).send({
+        status: res.statusCode,
+        error: 'Invalid latitude format',
+      })
+    }
+
+    if (!longitude) {
+      return res.status(422).send({
+        status: res.statusCode,
+        error: 'Invalid longitude format',
+      })
+    }
+
+    const location = `${latitude}, ${longitude}`
 
     if (!location) {
       return res.status(400).send({
