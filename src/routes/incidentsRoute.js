@@ -1,6 +1,6 @@
 import express from 'express';
 import IncidentsController from '../controllers/incidentsController';
-import Validate from '../middlewares/validatePost';
+import Validate from '../middlewares/validate';
 
 const router = express.Router();
 
@@ -9,8 +9,8 @@ router.get('/red-flags', IncidentsController.getAllRedFlags);
 router.get('/red-flags/:id', Validate.validateId,
   IncidentsController.getRedFlag);
 
-router.post('/red-flags', Validate.validatePost,
-  IncidentsController.postRedFlag);
+router.post('/red-flags', Validate.validateLocationUpdate,
+  Validate.validatePost, IncidentsController.postRedFlag);
 
 router.patch('/red-flags/:id/location', Validate.validateId,
   Validate.validateLocationUpdate, IncidentsController.updateLocation);

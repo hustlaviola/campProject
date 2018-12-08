@@ -59,8 +59,9 @@ describe('/GET/:id red-flag', () => {
 /* Test the /POST route */
 
 describe('/POST red-flag', () => {
-  it('it should not POST a red-flag without LOCATION', (done) => {
+  it('it should not POST a red-flag without LATITUDE', (done) => {
     const redFlag = {
+      longitude: '126.789',
       comment: 'New red-flag',
     };
     chai.request(app)
@@ -69,13 +70,65 @@ describe('/POST red-flag', () => {
       .end((err, res) => {
         res.should.have.status(400);
         res.body.should.be.an('object');
-        res.body.should.have.property('error').eql('Please add a location');
+        res.body.should.have.property('error')
+          .eql('Please enter a latitude');
+        done(err);
+      });
+  });
+  it('it should not POST a red-flag without LONGITUDE', (done) => {
+    const redFlag = {
+      latitude: '66.789',
+      comment: 'New red-flag',
+    };
+    chai.request(app)
+      .post('/api/v1/red-flags')
+      .send(redFlag)
+      .end((err, res) => {
+        res.should.have.status(400);
+        res.body.should.be.an('object');
+        res.body.should.have.property('error')
+          .eql('Please enter a longitude');
+        done(err);
+      });
+  });
+  it('it should not POST a red-flag with wrongly formatted LATITUDE', (done) => {
+    const redFlag = {
+      latitude: '66er',
+      longitude: '44.567',
+      comment: 'New red-flag',
+    };
+    chai.request(app)
+      .post('/api/v1/red-flags')
+      .send(redFlag)
+      .end((err, res) => {
+        res.should.have.status(422);
+        res.body.should.be.an('object');
+        res.body.should.have.property('error')
+          .eql('Invalid latitude format');
+        done(err);
+      });
+  });
+  it('it should not POST a red-flag with wrongly formatted LONGITUDE', (done) => {
+    const redFlag = {
+      latitude: '66.234',
+      longitude: '4er',
+      comment: 'New red-flag',
+    };
+    chai.request(app)
+      .post('/api/v1/red-flags')
+      .send(redFlag)
+      .end((err, res) => {
+        res.should.have.status(422);
+        res.body.should.be.an('object');
+        res.body.should.have.property('error')
+          .eql('Invalid longitude format');
         done(err);
       });
   });
   it('it should not POST a red-flag without COMMENT', (done) => {
     const redFlag = {
-      location: '33.453, 44.322',
+      latitude: '66.234',
+      longitude: '44.55',
     };
     chai.request(app)
       .post('/api/v1/red-flags')
@@ -89,7 +142,8 @@ describe('/POST red-flag', () => {
   });
   it('it should POST a red-flag incident', (done) => {
     const incident = {
-      location: '30.433, 33.461',
+      latitude: '66.234',
+      longitude: '34.77',
       comment: 'New red-flag',
     };
     chai.request(app)
@@ -113,7 +167,9 @@ describe('/PATCH/:id/location red-flag', () => {
     (done) => {
       const redFlag = {
         id: 11,
-        location: '44.000, 33.000',
+        latitude: '66.234',
+        longitude: '45.677',
+        comment: 'New red-flag',
       };
       chai.request(app)
         .patch(`/api/v1/red-flags/${redFlag.id}/location`)
@@ -126,10 +182,12 @@ describe('/PATCH/:id/location red-flag', () => {
           done(err);
         });
     });
-  it('it should return an error if location field is empty', (done) => {
+  it('it should return an error if latitude field is empty', (done) => {
     const redFlag = {
       id: 1,
-      location: '',
+      latitude: '',
+      longitude: '45.677',
+      comment: 'New red-flag',
     };
     chai.request(app)
       .patch(`/api/v1/red-flags/${redFlag.id}/location`)
@@ -137,7 +195,26 @@ describe('/PATCH/:id/location red-flag', () => {
       .end((err, res) => {
         res.should.have.status(400);
         res.body.should.be.an('object');
-        res.body.should.have.property('error').eql('Please add a new location');
+        res.body.should.have.property('error')
+          .eql('Please enter a latitude');
+        done(err);
+      });
+  });
+  it('it should return an error if longitude field is empty', (done) => {
+    const redFlag = {
+      id: 1,
+      latitude: '45.677',
+      longitude: '',
+      comment: 'New red-flag',
+    };
+    chai.request(app)
+      .patch(`/api/v1/red-flags/${redFlag.id}/location`)
+      .send(redFlag)
+      .end((err, res) => {
+        res.should.have.status(400);
+        res.body.should.be.an('object');
+        res.body.should.have.property('error')
+          .eql('Please enter a longitude');
         done(err);
       });
   });
@@ -145,7 +222,9 @@ describe('/PATCH/:id/location red-flag', () => {
     (done) => {
       const redFlag = {
         id: 1,
-        location: '44.000, 33.000',
+        longitude: '-150.677',
+        latitude: '45.677',
+        comment: 'New red-flag',
       };
       chai.request(app)
         .patch(`/api/v1/red-flags/${redFlag.id}/location`)

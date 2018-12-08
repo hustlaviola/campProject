@@ -67,8 +67,11 @@ class IncidentsController {
   static updateLocation(req, res) {
     const redFlag = incidents
       .find(incident => incident.id === parseInt(req.params.id, 10));
+  
+    const { latitude, longitude } = req.body;
 
-    redFlag.location = req.body.location;
+    redFlag.location = `${latitude}, ${longitude}`;
+    
     const response = [{
       id: redFlag.id,
       message: 'Updated red-flag record\'s location',
