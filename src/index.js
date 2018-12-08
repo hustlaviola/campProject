@@ -5,7 +5,7 @@ const app = express();
 
 app.use(express.json());
 
-app.get('/', (req, res) => {
+app.get('/api/v1', (req, res) => {
   res.status(200).send('Welcome to iReporter');
 });
 
